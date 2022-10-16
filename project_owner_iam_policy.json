@@ -1,0 +1,82 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "codecommit:CreateBranch",
+                "codecommit:UpdateRepositoryDescription",
+                "codecommit:UpdateRepositoryName",
+                "codecommit:UpdatePullRequestDescription",
+                "codecommit:CreatePullRequest",
+                "codecommit:GitPush",
+                "codecommit:UpdatePullRequestStatus",
+                "codecommit:UpdatePullRequestTitle",
+                "codecommit:DeleteBranch"
+            ],
+            "Resource": "*"
+        },
+        
+            {
+                    "Sid": "VisualEditor0",
+                    "Effect": "Allow",
+                    "Action": [
+                        "codebuild:StopBuild",
+                        "codebuild:StartBuild",
+                        "codebuild:UpdateProject"
+                    ],
+                    "Resource": "*"
+                },
+
+                
+                        {
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": [
+                                "lambda:UpdateFunctionCode",
+                                "lambda:AddPermission",
+                                "lambda:PublishLayerVersion",
+                                "lambda:UpdateFunctionConfiguration",
+                                "lambda:AddLayerVersionPermission",
+                                "lambda:RemoveLayerVersionPermission",
+                                "lambda:RemovePermission"
+                            ],
+                            "Resource": "*"
+                        },
+                        
+                                {
+                                    "Sid": "VisualEditor0",
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "apigateway:PUT",
+                                        "apigateway:PATCH",
+                                        "apigateway:POST"
+                                    ],
+                                    "Resource": "*"
+                                },
+                    
+                                        {
+                                            "Sid": "VisualEditor0",
+                                            "Effect": "Allow",
+                                            "Action": "cloudwatch:GetMetricStream",
+                                            "Resource": [
+                                                "arn:aws:cloudwatch:*:account-num:metric-stream/code-commit-policy-2",
+                                                "arn:aws:cloudwatch:*:account-num:metric-stream/code-build-policy-2",
+                                                "arn:aws:cloudwatch:*:account-num:metric-stream/lambda-function-policy-2",
+                                                "arn:aws:cloudwatch:*:account-num:metric-stream/api-gateway-policy-2"
+                                            ]
+                                        },
+                                        {
+                                            "Sid": "VisualEditor1",
+                                            "Effect": "Allow",
+                                            "Action": [
+                                                "cloudwatch:GetMetricData",
+                                                "cloudwatch:ListMetricStreams",
+                                                "cloudwatch:GetMetricStatistics",
+                                                "cloudwatch:ListMetrics"
+                                            ],
+                                            "Resource": "*"
+                                        }
+                                    ]
+                                }

@@ -1,0 +1,64 @@
+{
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Sid": "Stmt1665907341717",
+                        "Action": [
+                          "codecommit:GitPush"
+                        ],
+                        "Effect": "Allow",
+                        "Resource": "*",
+                        "Condition": {
+                          "StringNotLike": {
+                            "codecommit:References": [
+                              "prod",
+                              " staging"
+                            ]
+                          }
+                        }
+                      },
+                      {
+                        "Sid": "Stmt1665907448702",
+                        "Action": [
+                          "codecommit:CreatePullRequest"
+                        ],
+                        "Effect": "Allow",
+                        "Resource": "*"
+                      },
+                      {
+                        "Sid": "Stmt1665907549025",
+                        "Action": [
+                          "codecommit:UpdatePullRequestDescription",
+                          "codecommit:UpdatePullRequestStatus",
+                          "codecommit:UpdatePullRequestTitle"
+                        ],
+                        "Effect": "Allow",
+                        "Resource": "*",
+                        "Condition": {
+                          "StringNotLike": {
+                            "aws:SourceArn": "prod"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "Sid": "VisualEditor0",
+                    "Effect": "Allow",
+                    "Action": "cloudwatch:GetMetricStream",
+                    "Resource": [
+                        "arn:aws:cloudwatch:*:account-num:metric-stream/code-commit-policy-2",
+
+                    ]
+                },
+                {
+                    "Sid": "VisualEditor1",
+                    "Effect": "Allow",
+                    "Action": [
+                        "cloudwatch:GetMetricData",
+                        "cloudwatch:ListMetricStreams",
+                        "cloudwatch:GetMetricStatistics",
+                        "cloudwatch:ListMetrics"
+                    ],
+                    "Resource": "*"
+                }
